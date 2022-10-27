@@ -1,25 +1,33 @@
+'''
+Тест успешно проходит на странице http://suninjuly.github.io/registration1.html
+
+Тест падает с ошибкой NoSuchElementException http://suninjuly.github.io/registration2.html
+
+Используемые селекторы должны быть уникальны
+'''
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
 try:
-    link = "http://suninjuly.github.io/registration1.html"
+    link = "http://suninjuly.github.io/registration2.html"
     browser = webdriver.Chrome()
     browser.get(link)
 
-    # Ваш код, который заполняет обязательные поля
+    # код, который заполняет обязательные поля
     time.sleep(8)
-    browser.find_element(By.CSS_SELECTOR, ".first_class [placeholder='Input your first name']").send_keys('Tom')
-    browser.find_element(By.CSS_SELECTOR, ".second_class [placeholder='Input your last name']").send_keys('Moju')
-    browser.find_element(By.CSS_SELECTOR, ".third_class [placeholder='Input your email']").send_keys("wer@gmail.com")
-
+    browser.find_element(By.CSS_SELECTOR, ".first_block input.form-control.first").send_keys('Tom')
+    browser.find_element(By.CSS_SELECTOR, ".first_block input.form-control.second").send_keys('Moju')
+    browser.find_element(By.CSS_SELECTOR, ".first_block input.form-control.third").send_keys("wer@gmail.com")
     # Отправляем заполненную форму
+    time.sleep(1)
     button = browser.find_element(By.CSS_SELECTOR, "button.btn")
     button.click()
 
     # Проверяем, что смогли зарегистрироваться
     # ждем загрузки страницы
-    time.sleep(10)
+    time.sleep(3)
 
     # находим элемент, содержащий текст
     welcome_text_elt = browser.find_element(By.TAG_NAME, "h1")
