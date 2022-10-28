@@ -52,7 +52,7 @@ class TestAnswerForTextArea:
         btn = browser.find_element(By.CLASS_NAME, 'submit-submission')
         btn.click()
 
-        # WebDriverWait(browser, 10).until(EC.presence_of_element_located(By.CLASS_NAME, 'smart-hints__hint'))
+        # message = WebDriverWait(browser, 10).until(EC.presence_of_element_located(By.CLASS_NAME, 'smart-hints__hint'))
         message = browser.find_element(By.CLASS_NAME, 'smart-hints__hint')
         assert 'Correct' in message.text
 
